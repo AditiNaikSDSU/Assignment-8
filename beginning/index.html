@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Assignment 08</title>
+    
+  <style>
+    :root{
+      --blue:#6c93be;         
+      --blue-dark:#547ea9;
+      --row-alt:#e9f0f8;    
+      --border:#bfcfe3;
+      --error:#c62828;
+      --text:#222;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:"Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      margin:32px;
+      background:#fff;
+    }
+    h1{font-size:28px;font-weight:600;margin:0 0 20px 0;}
+    .section-title{font-weight:700;margin:16px 0 12px 0;}
+    .form{max-width:520px;padding:8px 0 16px 0;}
+    .row{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      align-items:center;
+      gap:12px;
+      margin:8px 0;
+    }
+    .row label{justify-self:start;}
+    .input{
+      width:260px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:3px;
+      font-size:14px;
+    }
+    .error{
+      display:inline-block;
+      margin-left:12px;
+      font-size:12px;
+      color:var(--error);
+      min-width:120px;
+    }
+    .actions{display:flex;justify-content:center;margin-top:8px;}
+    .btn{
+      border:1px solid var(--blue-dark);
+      background:var(--blue);
+      color:#fff;
+      padding:8px 22px;
+      border-radius:4px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn:hover{background:var(--blue-dark);}
+    .count{font-weight:700;margin:22px 0 8px 0;}
+
+    table{
+      width:920px;
+      border-collapse:collapse;
+      border-left:1px solid var(--border);
+      border-right:1px solid var(--border);
+    }
+    thead th{
+      background:var(--blue);
+      color:#fff;
+      text-align:left;
+      padding:10px 12px;
+      font-weight:700;
+      border-right:1px solid var(--blue-dark);
+    }
+    thead th:last-child{border-right:none;}
+    tbody td{
+      padding:10px 12px;
+      border-right:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      vertical-align:middle;
+    }
+    tbody tr:nth-child(odd){background:var(--row-alt);}
+    tbody td:last-child{border-right:none;width:120px;text-align:center;}
+    .btn-sm{
+      background:var(--blue);
+      border:1px solid var(--blue-dark);
+      color:#fff;
+      padding:6px 14px;
+      border-radius:4px;
+      font-size:13px;
+      cursor:pointer;
+    }
+    .btn-sm:hover{background:var(--blue-dark);}
+  </style>
+</head>
+<body>
+  <h1>The Employee Management Application</h1>
+
+  <div class="section-title">Add Employee</div>
+  <!-- NOTE: no "required" attributes per assignment; JS will validate -->
+  <form id="empForm" class="form" novalidate>
+    <div class="row">
+      <label for="name">Name:</label>
+      <div>
+        <input class="input" id="name" type="text" />
+        <span id="nameError" class="error"></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="title">Title:</label>
+      <div>
+        <input class="input" id="title" type="text" />
+        <span id="titleError" class="error"></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="ext">Extension:</label>
+      <div>
+        <input class="input" id="ext" type="text" inputmode="numeric" />
+        <span id="extError" class="error"></span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn">Add</button>
+    </div>
+  </form>
+
+  <div id="empCount" class="count">Showing 0 Employees</div>
+
+  <table aria-label="Employees">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Extension</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="empBody"></tbody>
+  </table>
+
+  <script src="js/employee-management.js"></script>
+</body>
+</html>
